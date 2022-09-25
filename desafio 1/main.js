@@ -24,7 +24,8 @@ class Usuario{
         this.libros.push({nombre: nombre, autor: autor})
     };
     getBookNames(){
-        this.libros.map(libro=>console.log(libro.nombre))
+        const listadoLibros = this.libros.map(libro=>libro.nombre);
+        console.log(listadoLibros)
     };
 };
 
@@ -43,6 +44,3 @@ nuevoUsuario.addBook('¿Como criar mascotas que son tutores?','Nicolas Clos');
 // ES CHISTE NO SE ME ENOJE :)
 
 nuevoUsuario.getBookNames()
-
-
-
