@@ -1,0 +1,3 @@
+[{"title":"Iphone 11","precio":"700","thumbnail":"https://www.brandimia.com/productos/IPH1164P-2.jpg","id":1},{"title":"Iphone 12 pro","precio":"900","thumbnail":"https://www.apple.com/newsroom/images/product/iphone/standard/Apple_announce-iphone12pro_10132020.jpg.og.jpg","id":2},{"title":"Iphone 14","precio":"1100","thumbnail":"https://www.cronista.com/files/image/477/477283/631a14b8409bf.jpg","id":3}]
+
+
