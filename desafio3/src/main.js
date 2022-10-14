@@ -83,7 +83,7 @@ const app = express();
 
 const PORT  = 8080;
 
-app.get('/productos', (req, res) => {
+app.get('/productos', (req, res) => { 
     res.json(nuevoArchivo.getAll());
 })
 
