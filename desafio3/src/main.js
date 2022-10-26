@@ -24,7 +24,7 @@ class Container{
             const contenidoDeserializado = JSON.parse(contenido);
             for(let i = 0; i < contenidoDeserializado.length; i++){
                 if(contenidoDeserializado[i].id === id){
-                console.log(contenidoDeserializado[i]);
+                return (contenidoDeserializado[i]);
                 }
             }
         }
@@ -36,7 +36,7 @@ class Container{
         try{
             const contenido = await fs.promises.readFile(`${this.src}`, 'utf-8');
             const contenidoDeserializado = JSON.parse(contenido);
-            return contenidoDeserializado;
+            return (contenidoDeserializado);
         }
         catch(err){
             console.log('Error de lectura', err)
@@ -69,13 +69,11 @@ class Container{
     }
 }
 
-
-
 // CREO UN NUEVO CONTAINER CON EL ARCHIVO DE PRODUCTOS
 
 const nuevoArchivo = new Container('./src/productos.txt');
 
-console.log(nuevoArchivo.getAll())
+// USANDO EXPRESS
 
 const express = require('express');
 
@@ -83,13 +81,23 @@ const app = express();
 
 const PORT  = 8080;
 
-app.get('/productos', (req, res) => { 
-    res.json(nuevoArchivo.getAll());
+app.get('/productos', async (req, res) => {
+    try{
+        res.json(await nuevoArchivo.getAll())
+    } catch(err){
+        console.log('Error:', 'Error de lectura')
+    }
 })
 
-app.get('/productoRandom', (req, res) => {
-    res.json(nuevoArchivo.getById(Math.floor(Math.random() * nuevoArchivo.getAll().length)))
+app.get('/productoRandom', async (req, res) => {
+        try{
+            res.json(await nuevoArchivo.getById(Math.ceil(Math.random()*3))) 
+        } catch(e){
+            
+        }
 })
 
-const server = app.listen(PORT, ()=>{
-})
+const server = app.listen(PORT, () => console.log(`El servidor está corriendo en el puerto ${PORT}`))
+
+server.on('error', err => console.log(`Error en el servidor ${PORT}`))
+
