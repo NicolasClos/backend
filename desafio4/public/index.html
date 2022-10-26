@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API RESTful</title>
+</head>
+<body>
+    <h1>API RESTful</h1>
+    <div>
+        <h3>AGREGAR PRODUCTO: </h3>
+        <form method="POST" action="/api/productos">
+        
+            <label for="title">Title: </label>
+            <input id="title" name="title" type="text">
+            <label for="price">Price: </label>
+            <input type="number" id="price" name="price">
+            <label for="thumbnail">Thumbnail: </label>
+            <input type="text" id="thumbnail" name="thumbnail">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+    <script src="../src/main.js"></script>
+</body>
+</html>
