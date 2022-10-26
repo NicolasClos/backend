@@ -48,7 +48,7 @@ route.post('/', async (req, res)=>{
 
     await fs.writeFile(filePath, JSON.stringify(productos));
 
-    res.json({
+    res.status(201).json({
         msg: 'Ok'
     });
 });
