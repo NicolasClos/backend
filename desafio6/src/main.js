@@ -1,1 +1,8 @@
-// AHORA TERMINO Y LO PUSHEO, LO ESTOY TRABAJANDO DESDE OTRA CARPETA!! NO ME MATEEE, SIGO ATRASADO!!
+const server = require('./services/server');
+
+const PORT = 8080;
+
+server.listen(PORT, ()=>{
+    console.log(`Escuchando en el servidor con puerto ${PORT}`);
+    
+})

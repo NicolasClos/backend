@@ -14,49 +14,63 @@ const layoutsPath = `${viewPath}/layouts`;
 const partialsPath = `${viewPath}/partials`;
 const defaultLayoutPath = `${layoutsPath}/index.hbs`;
 
-
 app.use(express.static('public'))
 
 // CONFIG HANDLEBARS
-app.set('view engine', 'hbs');
-app.set('views', viewPath);
+app.set('view engine', 'hbs'); // voy a usar handlebars
+app.set('views', viewPath); // mi carpeta de views está en tal lugar
 app.engine('hbs', engine({
     layoutsDir: layoutsPath,
-    extname: 'hbs',
-    defaultLayout: defaultLayoutPath,
-    partialsDir: partialsPath
-}));
+    extname: 'hbs', // esta propiedad permite hacer la extensión más corta
+    defaultLayout: defaultLayoutPath, // esta propiedad permite utilizar un layout default
+    partialsDir: partialsPath // 
+})); //
 
 // HANDLEBARS
+app.get('/', async (req, res)=>{
+    const data = await fs.readFile(filePath, 'utf8');
+    const productos = JSON.parse(data);
+    res.render('main');
+}); 
+
 app.get('/productos', (req, res)=>{
-    res.render('main', {nombre: 'NICO'});
+    res.render('main')
 });
+// main hace referencia a la linea 22 app.set('views', viewPath);
+// {  }
 
-app.get('/test', (req, res)=>{
-    res.json({
-        msg: 'ok'
-    });
-});
+/*
+const funcionPost = ()=>{
+    axios.post(`/productos?title=${title}&price=${price}&thumbnail=${thumbnail}`)
+};
+*/
 
-app.post('/producto', async (req, res)=>{
+
+app.post('/productos', async (req, res)=>{
     const json = await fs.readFile(filePath, 'utf8');
     const productos = JSON.parse(json);
 
     const data = req.body;
 
+    console.log(data)
+/*
     const {title, price, thumbnail} = data;
 
     if(!title || !price || !thumbnail){
-        return res.status(400).render('prods');
+        return res.status(400).json({
+            msg: '¡Campos invalidos!'
+        });
     }
 
     productos.push(data);
 
-    productos[productos.length - 1].id = productos.length;
+    productos[productos.length -1].id = productos.length;
 
     await fs.writeFile(filePath, JSON.stringify(productos));
 
-    res.render('prods');
+    res.status(201).json({
+        msg: 'Ok',
+    });*/
 });
 
 app.use(express.json());

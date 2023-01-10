@@ -1,0 +1,36 @@
+h1{
+    text-align: center;
+}
+
+#form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    background-color: #444;
+    height: 200px;
+    padding: 20px;
+}
+
+#form input{
+    width: 100%;
+    padding: 5px;
+    margin-top: 2px;
+    border: none;
+    outline: none;
+}
+
+#enviar{
+    background-color: #111;
+    margin-top: 5px!important;
+    width: 101%!important;
+    color: #fff;
+    cursor: pointer;
+
+}
+#enviar:hover{
+    background-color: #222;
+    
+}
