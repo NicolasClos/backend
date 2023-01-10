@@ -1,5 +1,8 @@
 class ProductManager {
-    constructor(products){
+
+    products;
+
+    constructor(){
         this.products = []
     };
 
@@ -47,6 +50,6 @@ const manager = new ProductManager();
 
 manager.addProduct('iPhone 13', '256GB', 999, 'apple.com/iphone13.png', 12, 213)
 
-manager.addProduct('iPhone 14 PRO MAX', '256GB', 1299, 'apple.com/iphone14promax.png', 23);
+manager.addProduct('iPhone 14 PRO MAX', '256GB', 1299, 'apple.com/iphone14promax.png', 12, 213);
 
 manager.getProducts();
